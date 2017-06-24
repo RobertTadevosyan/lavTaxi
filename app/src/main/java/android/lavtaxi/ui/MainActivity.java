@@ -1,5 +1,6 @@
-package android.lavtaxi;
+package android.lavtaxi.ui;
 
+import android.lavtaxi.R;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
