@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="/home/rob/.android/build-cache/3ae10d6f637f595dcf01a1a84a97f0502af37808/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.0"
+        sha1="95955cf3055a3384ba1bfc30c6da82b92df74e0a">
+        <dex dex="/home/rob/Desktop/lavTaxi/app/build/intermediates/pre-dexed/debug/classes_e1255baa5c96afc69959e60c684c56f3f21fff34.jar" />
+    </item>
+
+</items>

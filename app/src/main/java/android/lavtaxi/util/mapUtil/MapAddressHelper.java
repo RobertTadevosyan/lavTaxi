@@ -32,7 +32,7 @@ public class MapAddressHelper {
 
 
     public String getAddressByLongLat(LatLng latLng) {
-        String returningAddress = "";
+        String returningAddress = "Armenia";
         Geocoder geocoder = new Geocoder(mapsActivity, new Locale("am"));
         List<Address> yourAddresses = null;
         try {
@@ -40,11 +40,11 @@ public class MapAddressHelper {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        if (yourAddresses.size() > 0) {
+        if (yourAddresses != null && yourAddresses.size() > 0) {
             String yourAddress = yourAddresses.get(0).getAddressLine(0);
             String yourCity = yourAddresses.get(0).getAddressLine(1);
             String yourCountry = yourAddresses.get(0).getAddressLine(2);
-            returningAddress = (yourAddress != null ? yourAddress : "") + (yourCity != null ? yourCity : "") + (yourCountry != null ? yourCountry : "");
+            returningAddress = (yourAddress != null ? yourAddress + " " : "") + (yourCity != null ? yourCity + " " : "") + (yourCountry != null ? yourCountry + " " : "");
         }
         return returningAddress;
     }
@@ -52,5 +52,9 @@ public class MapAddressHelper {
     public Marker addmarkerWithTitle(LatLng latLng) {
         return googleMap.addMarker(new MarkerOptions().position(latLng)
                 .title(getAddressByLongLat(latLng)));
+    }
+
+    public Marker addmarker(LatLng latLng) {
+        return googleMap.addMarker(new MarkerOptions().position(latLng));
     }
 }

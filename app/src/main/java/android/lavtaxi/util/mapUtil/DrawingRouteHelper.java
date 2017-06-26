@@ -1,9 +1,13 @@
 package android.lavtaxi.util.mapUtil;
 
+import android.app.Application;
 import android.graphics.Color;
+import android.lavtaxi.LavApplication;
+import android.lavtaxi.ui.MapsActivity;
 import android.location.Location;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
@@ -27,7 +31,7 @@ public class DrawingRouteHelper {
         this.googleMap = googleMap;
     }
 
-    public void drawRoute(LatLng from, LatLng to){
+    public void drawRoute(LatLng from, LatLng to) {
         String url = getMapsApiDirectionsUrl(from, to);
         ReadTask downloadTask = new ReadTask();
         downloadTask.execute(url);
@@ -89,8 +93,6 @@ public class DrawingRouteHelper {
             try {
                 MapHttpConnection http = new MapHttpConnection();
                 data = http.readUr(url[0]);
-
-
             } catch (Exception e) {
                 // TODO: handle exception
                 Log.d("Background Task", e.toString());
@@ -150,9 +152,8 @@ public class DrawingRouteHelper {
                 polyLineOptions.width(3);
                 polyLineOptions.color(Color.BLUE);
             }
-
-            googleMap.addPolyline(polyLineOptions);
-
+            if (polyLineOptions != null) googleMap.addPolyline(polyLineOptions);
+            else Toast.makeText(LavApplication.getMyApplicationContext(), "Հնարավոր չէ գծել ճանապարհ։", Toast.LENGTH_SHORT).show();
         }
     }
 }
